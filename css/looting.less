@@ -1,0 +1,466 @@
+@orange:       #7F3300;
+@lightGrey:    #7F7F7E;
+@midGrey:      #4C4C4C;
+@darkGrey:     #323232;
+@white:        #CBCACA;
+
+@midBrown:     #7E4600;
+@lightOrange:  #CA7000;
+@lightBrown:   #945301;
+@brGrey:       #CAC9C8;
+@darkBrown:    #180C00;
+
+/*http:        //www.colourlovers.com/palette/953498/Headache*/
+
+@head_brown:        #655643;
+@head_green:        #80BCA3;
+@head_light:        #F6F7BD;
+@head_orange:       #E6AC27;
+@head_orangered:    #E6AC27;
+
+/*http:        //www.colourlovers.com/palette/656966/Koi_Carp*/
+
+@koi_midBrown:     #F0D8A8;
+@koi_darkBrown:    #3D1C00;
+@koi_green:        #86B8B1;
+@koi_lightBrown:   #F2D694;
+@koi_orange:       #FA2A00;
+
+/*http:        //www.colourlovers.com/palette/174686/She_Is_French_Yes*/
+
+@fr_grey:         #3E4147;
+@fr_white:        #FFFEDF;
+@fr_lightBrown:   #DFBA69;
+@fr_darkBrown:    #5A2E2E;
+@fr_black:        #2A2C31;
+
+@dark:         @fr_black;
+@mid:          @fr_grey;
+@lowmid:     darken(@mid, 5%);
+@light:        @fr_lightBrown;
+@brite:        @fr_white;
+@emphasis:     @lightOrange;
+
+/*mixin*/
+
+
+.text-shadow (@string: 0 1px 3px rgba(0, 0, 0, 0.25)) {
+  text-shadow: @string;
+}
+.box-shadow (@string) {
+  -webkit-box-shadow: @string;
+  -moz-box-shadow:    @string;
+  box-shadow:         @string;
+}
+.drop-shadow (@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+  -webkit-box-shadow: @x @y @blur @spread rgba(0, 0, 0, @alpha);
+  -moz-box-shadow:  @x @y @blur @spread rgba(0, 0, 0, @alpha);
+  box-shadow:   @x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+.inner-shadow (@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+  -webkit-box-shadow: inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+  -moz-box-shadow:    inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+  box-shadow:         inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+
+.box-sizing (@type: border-box) {
+  -webkit-box-sizing: @type;
+  -moz-box-sizing:    @type;
+  box-sizing:         @type;
+}
+
+.border-radius (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius:    @radius;
+  border-radius:         @radius;
+
+  -moz-background-clip:    padding;
+  -webkit-background-clip: padding-box;
+  background-clip:         padding-box;
+}
+.border-radiuses (@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+  -webkit-border-top-right-radius:    @topright;
+  -webkit-border-bottom-right-radius: @bottomright;
+  -webkit-border-bottom-left-radius:  @bottomleft;
+  -webkit-border-top-left-radius:     @topleft;
+
+  -moz-border-radius-topright:        @topright;
+  -moz-border-radius-bottomright:     @bottomright;
+  -moz-border-radius-bottomleft:      @bottomleft;
+  -moz-border-radius-topleft:         @topleft;
+
+  border-top-right-radius:            @topright;
+  border-bottom-right-radius:         @bottomright;
+  border-bottom-left-radius:          @bottomleft;
+  border-top-left-radius:             @topleft;
+
+  -moz-background-clip:    padding;
+  -webkit-background-clip: padding-box;
+  background-clip:         padding-box;
+}
+
+.opacity (@opacity: 0.5) {
+  -webkit-opacity:  @opacity;
+  -moz-opacity:     @opacity;
+  opacity:    @opacity;
+}
+
+.gradient (@startColor: #eee, @endColor: white) {
+  background-color: @startColor;
+  background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+  background: -webkit-linear-gradient(top, @startColor, @endColor);
+  background: -moz-linear-gradient(top, @startColor, @endColor);
+  background: -ms-linear-gradient(top, @startColor, @endColor);
+  background: -o-linear-gradient(top, @startColor, @endColor);
+}
+.horizontal-gradient (@startColor: #eee, @endColor: white) {
+  background-color: @startColor;
+  background-image: -webkit-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+  background-image: -webkit-linear-gradient(left, @startColor, @endColor);
+  background-image: -moz-linear-gradient(left, @startColor, @endColor);
+  background-image: -ms-linear-gradient(left, @startColor, @endColor);
+  background-image: -o-linear-gradient(left, @startColor, @endColor);
+}
+
+.animation (@name, @duration: 300ms, @delay: 0, @ease: ease) {
+  -webkit-animation: @name @duration @delay @ease;
+  -moz-animation:    @name @duration @delay @ease;
+  -ms-animation:     @name @duration @delay @ease;
+}
+
+.transition (@transition) {
+  -webkit-transition: @transition;
+  -moz-transition:    @transition;
+  -ms-transition:     @transition;
+  -o-transition:      @transition;
+}
+.transform(@string){
+  -webkit-transform: @string;
+  -moz-transform:    @string;
+  -ms-transform:     @string;
+  -o-transform:      @string;
+}
+.scale (@factor) {
+  -webkit-transform: scale(@factor);
+  -moz-transform:    scale(@factor);
+  -ms-transform:     scale(@factor);
+  -o-transform:      scale(@factor);
+}
+.rotate (@deg) {
+  -webkit-transform: rotate(@deg);
+  -moz-transform:    rotate(@deg);
+  -ms-transform:     rotate(@deg);
+  -o-transform:      rotate(@deg);
+}
+.skew (@deg, @deg2) {
+  -webkit-transform:       skew(@deg, @deg2);
+  -moz-transform:    skew(@deg, @deg2);
+  -ms-transform:     skew(@deg, @deg2);
+  -o-transform:      skew(@deg, @deg2);
+}
+.translate (@x, @y:0) {
+  -webkit-transform:       translate(@x, @y);
+  -moz-transform:    translate(@x, @y);
+  -ms-transform:     translate(@x, @y);
+  -o-transform:      translate(@x, @y);
+}
+.translate3d (@x, @y: 0, @z: 0) {
+  -webkit-transform:       translate3d(@x, @y, @z);
+  -moz-transform:    translate3d(@x, @y, @z);
+  -ms-transform:     translate3d(@x, @y, @z);
+  -o-transform:      translate3d(@x, @y, @z);
+}
+.perspective (@value: 1000) {
+  -webkit-perspective:  @value;
+  -moz-perspective:   @value;
+  -ms-perspective:  @value;
+  perspective:    @value;
+}
+.transform-origin (@x:center, @y:center) {
+  -webkit-transform-origin: @x @y;
+  -moz-transform-origin:    @x @y;
+  -ms-transform-origin:     @x @y;
+  -o-transform-origin:      @x @y;
+}
+
+.clearfix {
+  zoom: 1; // For IE 6/7 (trigger hasLayout)
+
+  &:before, &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear:both;
+  }
+}
+/*mixin*/
+
+ /*TOC*/
+
+@padding:             0.05;
+@textPadding:         @padding / 2;
+@mainWidth:           0.50;
+@navWidth:            (1.0 - ((4 * @padding) + @mainWidth));
+
+@paddingPercent:      percentage(@padding);
+@textPaddingPercent:  percentage(@textPadding);
+@mainWidthPercent:    percentage(@mainWidth);
+@navWidthPercent:     percentage(@navWidth);
+
+@baseFontSize:        16px;
+@baseLineHeight:      (@baseFontSize * 1.8);
+
+.container {
+  .clearfix;
+}
+
+.full {
+  float:none;
+  clear:both;
+}
+
+div.navigation {
+  @media (max-width: 800px) {
+    padding-top:       (@paddingPercent / 2);
+    background-color:  black;
+    padding-left:      @paddingPercent;
+    margin:            0;
+    .full;
+    /*width:100%;*/
+  }
+
+  padding-right:  @paddingPercent;
+  padding-bottom: @paddingPercent;
+}
+
+div.main {
+  @media (max-width: 800px) {
+    .full;
+    width: 90%;
+  }
+
+  float:         left;
+  width:         @mainWidthPercent;
+  margin-left:   @paddingPercent;
+  margin-right:  @paddingPercent;
+  margin-bottom: @paddingPercent;
+}
+
+
+a.title {
+  color:					@brite;
+  text-decoration:	none;
+}
+
+
+h3.extra-box {
+  font-size:			1em;
+  font-weight:		900;
+  color:					@emphasis;
+  margin-bottom:	0em;
+}
+
+.divider {
+  color:					@mid;
+}
+
+.centered {
+  margin-left:	auto;
+  margin-right:	auto;
+  display:			block;
+}
+
+a:hover.title {
+  color:	@emphasis;
+  text-decoration:	underline;
+}
+
+body {
+  background-color:  @dark;
+  color:             @brite;
+  font-size:         @baseFontSize;
+  a {
+    color: @light;
+  }
+  a:hover {
+    color:	@emphasis;
+  }
+}
+
+th, td {
+  padding:		1px 10px 1px 0pt;
+}
+ul.content {
+  list-style-type:	none;
+  margin-bottom:					0em;
+}
+
+td {
+  .site {
+    border:					0;
+  }
+}
+table {
+  margin-bottom:	0;
+}
+.lp-quote {
+  font-size:						0.9em;
+  font-style:						oblique;
+  margin-left:					0.5em;
+  margin-right:					0.5em;
+  padding:							0.5em;
+}
+
+div.extra-box {
+  .content {
+    margin-left:		1em;
+    font-size:			-1em;
+    color:					grey;
+  }
+}
+
+li {
+  list-style:						square;
+}
+
+img.left {
+  float:				left;
+}
+p.quote {
+  border:				1px dotted grey;
+  background-color:	#FFFFCC;
+  padding:				0.8em;
+  margin:				1em;
+}
+div.content {
+  .topics {
+    font-weight:		900;
+  }
+}
+
+img.right {
+  float:				right;
+}
+
+.big-word {
+  font-family:  "Helvetica Neue",Helvetica,Arial,sans-serif;
+  color:				@mid;
+  font-weight:	900;
+  letter-spacing:	-0.06em;
+  text-align:		left;
+  a {
+    text-decoration:	none;
+  }
+  a:hover {
+    color:					@emphasis;
+    text-decoration:	none;
+  }
+}
+
+div.ascii-art {
+  font-size: 6px;
+  line-height:5px;
+  font-weight: 900;
+  font-family: monospace;
+}
+
+article.post {
+  header {
+    h1 {
+      .big-word;
+      color: @mid;
+    }
+  }
+  img {
+    float: left;
+    padding-left:    (@paddingPercent / 2);
+    padding-bottom:  (@paddingPercent / 2);
+    padding-right:   (@paddingPercent / 2);
+    max-width: 90%;
+    @media (max-width: 800px) {
+      float:none;
+      .centered;
+    }
+  }
+
+  .content {
+    font-family: "ff-tisa-web-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+    font-weight: 400;
+    line-height: @baseLineHeight;
+    color: @brite;
+  }
+
+  footer {
+    .clearfix;
+    font-size:    (@baseFontSize / 1.5);
+    padding-top:  @textPaddingPercent;
+    border-top:   1.2px solid @mid;
+    .date {
+      float: right;
+    }
+
+    .author {
+      float: left;
+    }
+  }
+}
+
+.sidebar {
+
+  .header-and-navigation {
+    @media (max-width: 800px) {
+      border-bottom: 1px solid red;
+      .clearfix;
+
+      h1 {
+        float:right;
+        margin:0;
+        a {
+          color:				@mid;
+        }
+      }
+      .menu {
+        li {
+          list-style:						none;
+          .big-word;
+
+          a {
+          }
+        }
+      }
+    }
+  }
+  .posts {
+  }
+  .post {
+    .title {
+      color: @brite;
+    }
+  }
+}
+
+.embed {
+  position: relative;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+
+  iframe, object, embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.embed.video {
+  padding-bottom: 56.25%;
+}
+
+.embed.audio {
+  padding-bottom: 30%;
+}

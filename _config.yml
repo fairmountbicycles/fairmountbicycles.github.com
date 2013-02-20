@@ -1,0 +1,40 @@
+safe:         false
+auto:         true
+server:       true
+server_port:  4005
+baseurl:      /
+url:          http://fairmountbicycles.com
+title:        Fairmount Bicycles
+author:       Shelly
+email:        shelly@fairmountbicycles.com
+
+# https://github.com/mojombo/jekyll/blob/master/lib/jekyll/post.rb
+permalink: "/blog/:categories/:year-:month-:day-:title/"
+
+navigation:
+  - name: 'About Us'
+    path: '/about/'
+  - name: 'Bicycles'
+    path: '/bicycles/'
+    subcategories:
+      - name: 'New'
+        path: '/bicycles/new/'
+      - name: 'Used'
+        path: '/bicycles/used/'
+  - name: 'For Kids'
+    path: '/kids/'
+  - name: 'Service'
+    path: '/service/'
+  - name: 'Bicycle Repair Class'
+    path: '/repair_class/'
+  - name: 'Parts & Accessories'
+    path: '/parts/'
+
+exclude:      Rakefile, Gemfile, Gemfile.lock
+
+plugins:      ./_plugins
+
+future:       false
+lsi:          false
+pygments:     false
+

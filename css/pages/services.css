@@ -1,0 +1,4 @@
+.navigation .item a.active {
+	color:lightblue;
+	text-decoration: none;
+}

@@ -1,0 +1,9 @@
+.navigation .item a.active {
+	color:red;
+	text-decoration: none;
+}
+
+p {
+	margin: 1em;
+	padding: 1em;
+}
